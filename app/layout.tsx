@@ -5,6 +5,7 @@ import { Footer, Navbar } from "@/components";
 export const metadata: Metadata = {
   title: "E-Commerce",
   description: "Online shopping at its best",
+  icons: "/uniqlo_logo.png"
 };
 
 export default function RootLayout({
