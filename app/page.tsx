@@ -62,8 +62,8 @@ export default function Home() {
           <div className="text-4xl font-extrabold">NOTICE</div>
           <div className="my-4">
             <ul className="flex flex-col gap-1 text-base list-disc">
-              {notices.map((notice) => (
-                <li>{notice.text}</li>
+              {notices.map((notice, index) => (
+                <li key={index}>{notice.text}</li>
               ))}
             </ul>
           </div>
