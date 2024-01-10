@@ -3,7 +3,7 @@ import "./globals.css";
 import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
-  title: "E-Commerce",
+  title: "UNIQLO",
   description: "Online shopping at its best",
   icons: "/uniqlo_logo.png"
 };
