@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Men = () => {
   const pathname = usePathname();
@@ -10,9 +11,14 @@ const Men = () => {
   const formatPath = (path: string) => {
     const segments = path.split("/").filter(Boolean);
     return segments.map((segment, index) => (
-      <span key={index} className="text-gray-500 uppercase text-sm font-normal">
-        HOME PAGE / {segment}
-      </span>
+      <React.Fragment key={index}>
+        <div className="text-gray-500 uppercase text-sm font-normal inline">
+          {' / '} 
+        </div>
+        <Link className="text-gray-500 uppercase text-sm font-normal hover:underline" href={`/${segments.slice(0, index + 1).join('/')}`}>
+          {segment}
+        </Link>
+      </React.Fragment>
     ));
   };
 
@@ -69,7 +75,12 @@ const Men = () => {
 
   return (
     <div className="w-screen h-full pt-20 flex flex-col px-28">
-      <div className="mb-2 my-8">{formatPath(pathname)}</div>
+      <div className="mb-2 my-8">
+        <Link className="text-gray-500 uppercase text-sm font-normal hover:underline" href="/">
+          HOME PAGE
+        </Link>
+        {formatPath(pathname)}
+      </div>
 
       <h1 className="text-black font-black text-4xl my-4 mx-auto">MEN</h1>
 
