@@ -1,11 +1,116 @@
-import React from "react";
+"use client";
 
-const Users = () => {
+import { usePathname } from "next/navigation";
+import React from "react";
+import Image from "next/image";
+
+const Men = () => {
+  const pathname = usePathname();
+
+  const formatPath = (path: string) => {
+    const segments = path.split("/").filter(Boolean);
+    return segments.map((segment, index) => (
+      <span key={index} className="text-gray-500 uppercase text-sm font-normal">
+        HOME PAGE / {segment}
+      </span>
+    ));
+  };
+
+  const categories = [
+    {
+      type: "T-SHIRT",
+      image: "/men/tshirt.jpeg",
+    },
+    {
+      type: "CASUAL SHIRT",
+      image: "/men/casual_shirt.jpeg",
+    },
+    {
+      type: "SWEAT",
+      image: "/men/sweat.jpeg",
+    },
+    {
+      type: "SPORT UTILITY WEAR",
+      image: "/men/sport.jpeg",
+    },
+    {
+      type: "FLEECE",
+      image: "/men/fleece.jpeg",
+    },
+    {
+      type: "OUTERWEAR",
+      image: "/men/outerwear.jpeg",
+    },
+    {
+      type: "CASUAL PANTS",
+      image: "/men/casual_pants.jpeg",
+    },
+    {
+      type: "ALL PANTS",
+      image: "/men/all_pants.jpeg",
+    },
+    {
+      type: "SHORTS",
+      image: "/men/shorts.jpeg",
+    },
+    {
+      type: "UT",
+      image: "/men/ut.jpeg",
+    },
+    {
+      type: "INNERWEAR & SOCKS",
+      image: "/men/innerwear.jpeg",
+    },
+    {
+      type: "HEATTECH",
+      image: "/men/heattech.jpeg",
+    },
+  ];
+
   return (
-    <div className="overflow-hidden w-screen pt-20">
-      
+    <div className="w-screen h-full pt-20 flex flex-col px-28">
+      <div className="mb-2 my-8">{formatPath(pathname)}</div>
+
+      <h1 className="text-black font-black text-4xl my-4 mx-auto">MEN</h1>
+
+      <div className="my-8 mx-auto">
+        <Image
+          src="/men_poster.png"
+          width={1200}
+          height={700}
+          className="w-screen"
+          alt="Men Poster"
+        />
+      </div>
+
+      <div className="flex flex-col items-center">
+        <h2 className="text-black font-black text-4xl my-8">SEARCH BY CATEGORY</h2>
+        <div className="grid grid-cols-4 gap-6">
+          {categories.map((category, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <Image
+                src={category.image}
+                width={300}
+                height={300}
+                alt={category.type}
+              />
+              <p className="my-3 text-xl font-light">{category.type}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="my-20 mx-auto">
+        <Image
+          src="/limited_stock.jpeg"
+          width={1200}
+          height={700}
+          className="w-screen"
+          alt="Men Poster"
+        />
+      </div>
     </div>
   );
 };
 
-export default Users;
+export default Men;
