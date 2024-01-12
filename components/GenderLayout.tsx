@@ -70,7 +70,7 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
                 height={300}
                 alt={category.type}
               />
-              <p className="my-3 text-xl font-light">{category.type}</p>
+              <p className="my-3 text-xl font-light uppercase">{category.type}</p>
             </div>
           ))}
         </div>
