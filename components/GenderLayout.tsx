@@ -24,16 +24,18 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
 
   const currentPoster = posters[currentPosterIndex];
 
-  useEffect(() => {
-    const posterInterval = setInterval(() => {
-      setCurrentPosterIndex((prevIndex) =>
-        prevIndex === posters.length - 1 ? 0 : prevIndex + 1
-      );
-      setIsReady(false);
-    }, 10000);
+  if (posters.length > 1) {
+    useEffect(() => {
+      const posterInterval = setInterval(() => {
+        setCurrentPosterIndex((prevIndex) =>
+          prevIndex === posters.length - 1 ? 0 : prevIndex + 1
+        );
+        setIsReady(false);
+      }, 10000);
 
-    return () => clearInterval(posterInterval);
-  }, [posters]);
+      return () => clearInterval(posterInterval);
+    }, [posters]);
+  }
 
   const onLoadCallback = () => {
     setIsReady(true);
@@ -43,7 +45,9 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
     <div className="w-screen h-full pt-20 flex flex-col px-28">
       <Path />
 
-      <h1 className="text-black font-black text-4xl my-4 mx-auto uppercase">{gender}</h1>
+      <h1 className="text-black font-black text-4xl my-4 mx-auto uppercase">
+        {gender}
+      </h1>
 
       <div className="my-8 mx-auto">
         <Image
@@ -51,7 +55,9 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
           src={currentPoster.image}
           width={1200}
           height={700}
-          className={`w-screen transition duration-700 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-screen transition duration-700 ${
+            isReady ? "opacity-100" : "opacity-0"
+          }`}
           onLoad={onLoadCallback}
           alt={currentPoster.image}
         />
@@ -70,7 +76,9 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
                 height={300}
                 alt={category.type}
               />
-              <p className="my-3 text-xl font-light uppercase">{category.type}</p>
+              <p className="my-3 text-xl font-light uppercase">
+                {category.type}
+              </p>
             </div>
           ))}
         </div>
