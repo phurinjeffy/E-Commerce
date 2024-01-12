@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Path } from "@/components";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Category {
   type: string;
   image: string;
+  link: string;
 }
 
 interface Poster {
@@ -69,7 +71,7 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
         </h2>
         <div className="grid grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <Link key={index} className="flex flex-col items-center" href={category.link}>
               <Image
                 src={category.image}
                 width={300}
@@ -79,7 +81,7 @@ const GenderLayout = ({ categories, posters, gender }: GenderLayoutProps) => {
               <p className="my-3 text-xl font-light uppercase">
                 {category.type}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
